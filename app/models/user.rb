@@ -10,6 +10,5 @@ class User < ApplicationRecord
   validates :family_name_ruby, presence:true, format: {with: /\A[ァ-ヶ]+\z/, message: "Full-width katakana characters"}
   validates :first_name_ruby, presence:true, format: {with: /\A[ァ-ヶ]+\z/, message: "Full-width katakana characters"}
   validates :birth, presence:true
-  validates :password, format: {with: /\A[a-z\d]+\z/, message: "Include both letters and numbers"}
-
+  validates :password, format: {with: (/\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i), message: "Include both letters and numbers"}
 end
