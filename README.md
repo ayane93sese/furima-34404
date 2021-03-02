@@ -2,15 +2,17 @@
 
 ## users テーブル
 
-| Column        | Type    | Options    |
-| ------------- | ------- | ---------- |
-| nickname      | string  | null:false |
-| email         | string  | null:false |
-| password      | string  | null:false |
-| name          | string  | null:false |
-| birth_year    | integer | null:false |
-| birth_month   | integer | null:false |
-| birth_day     | integer | null:false |
+| Column               | Type    | Options                  |
+| -------------------- | ------- | ----------               |
+| nickname             | string  | null:false               |
+| email                | string  | null:false, unique: true |
+| encrypted_password   | string  | null:false               |
+| family_name          | string  | null:false               |
+| first_name           | string  | null:false               |
+| family_name_ruby     | string  | null:false               |
+| first_name_ruby      | string  | null:false               |
+| birth                | date    | null:false               |
+
 
 ### Association
 
@@ -19,16 +21,17 @@
 
 ## items テーブル
 
-| Column      | Type    | Options    |
-| ----------- | ------- | ---------- |
-| title       | string  | null:false |
-| text        | text    | null:false |
-| category_id | integer | null:false |
-| status_id   | integer | null:false |
-| payment_id  | integer | null:false |
-| area_id     | integer | null:false |
-| days        | integer | null:false |
-| price       | integer | null:false |
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| title       | string     | null:false                     |
+| text        | text       | null:false                     |
+| category_id | integer    | null:false                     |
+| status_id   | integer    | null:false                     |
+| payment_id  | integer    | null:false                     |
+| area_id     | integer    | null:false                     |
+| days_id     | integer    | null:false                     |
+| price       | integer    | null:false                     |
+| user_id     | references | null :false, foreign_key: true |
 
 
 ### Association
@@ -51,14 +54,15 @@
 
 ## send_orders テーブル
 
-| Column       | Type    | Options    |
-| ------------ | ------- | ---------- |
-| postal_code  | integer | null:false |
-| prefecture   | integer | null:false |
-| city         | string  | null:false |
-| address      | string  | null:false |
-| building     | string  |            |
-| phone_number | integer | null:false |
+| Column       | Type       | Options                       |
+| ------------ | ---------- | ----------------------------- |
+| postal_code  | string     | null:false                    |
+| area_id      | integer    | null:false                    |
+| city         | string     | null:false                    |
+| address      | string     | null:false                    |
+| building     | string     |                               |
+| phone_number | string     | null:false                    |
+| order_id     | references | null:false, foreign_key: true |
 
 ### Association
 
