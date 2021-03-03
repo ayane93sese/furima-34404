@@ -1,10 +1,15 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :status
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :payment
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :area
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :days
+
 
   belongs_to :user
   has_one_attached :image
