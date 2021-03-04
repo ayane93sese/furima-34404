@@ -9,10 +9,10 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  validates :title, :text, presence: true
-  validates :price, presence:true, inclusion: {in: (300..9999999)}, format: {with: /\A[0-9]+\z/}
+  validates :title, :image, :text, presence: true
+  validates :price, presence:true, inclusion: {in: (300..9999999), message: "Out of setting range"}, format: {with: /\A[0-9]+\z/, message: "Half-width number"} #Priceのバリテーションは合ってるのか謎だけど、とりあえずメッセージだけ設定して見た目を整えた状況
 
-  with_options numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 1, message: "Select" }do
     validates :category_id
     validates :status_id
     validates :payment_id
@@ -21,9 +21,3 @@ class Item < ApplicationRecord
   end
 
 end
-
-
-#バリテーション謎
-#image 一応has_one_attachedはやったけどお果たしてこれでいいのか謎のため
-#| price       | integer    | null:false  /\A[0-9]+\z/                   |
-#| user        | references | null :false, foreign_key: true |
