@@ -8,6 +8,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
+  has_one :order
 
   validates :title, :image, :text, presence: true
   validates :price, presence:true, inclusion: {in: (300..9999999), message: "Out of setting range"}, format: {with: /\A[0-9]+\z/, message: "Half-width number"}
