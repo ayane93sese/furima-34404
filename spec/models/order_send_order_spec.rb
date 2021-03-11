@@ -11,6 +11,11 @@ RSpec.describe OrderSendOrder, type: :model do
     it "全ての値が正しく入力されていれば保存ができる" do
       expect(@order_send_order).to be_valid
     end
+    it "tokenが空だと保存できない" do
+      @order_send_order.token = nil
+      @order_send_order.valid?
+      expect(@order_send_order.errors.full_messages).to include("Token can't be blank")
+    end
     it "postal_codeが空だと保存できない" do
       @order_send_order.postal_code = ''
       @order_send_order.valid?

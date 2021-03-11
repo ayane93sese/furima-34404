@@ -2,6 +2,7 @@ class OrderSendOrder
   include ActiveModel::Model
   attr_accessor :postal_code, :area_id, :city, :address, :building, :phone_number, :item_id, :user_id
 
+  attr_accessor :token
   with_options presence: true do
     validates :item_id
     validates :user_id
@@ -10,6 +11,7 @@ class OrderSendOrder
     validates :city
     validates :address
     validates :phone_number, format: {with: /\A[0-9]+\z/, message: "Input only number"}
+    validates :token
   end
 
   def save
