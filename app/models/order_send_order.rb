@@ -10,7 +10,7 @@ class OrderSendOrder
     validates :area_id, numericality: { other_than: 1, message: "Select" }
     validates :city
     validates :address
-    validates :phone_number, format: {with: /\A[0-9]+\z/, message: "Input only number"}
+    validates :phone_number, format: {with: /\A[0-9]+\z/, message: "Input only number"}, length: {maximum: 11}
     validates :token
   end
 
