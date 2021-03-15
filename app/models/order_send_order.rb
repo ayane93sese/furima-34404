@@ -6,11 +6,11 @@ class OrderSendOrder
   with_options presence: true do
     validates :item_id
     validates :user_id
-    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "Input correctly"}
-    validates :area_id, numericality: { other_than: 1, message: "Select" }
+    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "を正しく入力してください"}
+    validates :area_id, numericality: { other_than: 1, message: "を選択してください" }
     validates :city
     validates :address
-    validates :phone_number, format: {with: /\A[0-9]+\z/, message: "Input only number"}, length: {maximum: 11}
+    validates :phone_number, format: {with: /\A[0-9]+\z/, message: "は半角数字のみで入力してください"}, length: {maximum: 11}
     validates :token
   end
 

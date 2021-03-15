@@ -7,14 +7,14 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :birth
-    validates :password, format: {with: (/\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i), message: "Include both letters and numbers"}
+    validates :password, format: {with: (/\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i), message: "は半角英数で入力してください"}
 
-    with_options format: {with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: "Full-width characters"} do
+    with_options format: {with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: "は全角で入力してください"} do
       validates :family_name
       validates :first_name
     end
 
-    with_options format: {with: /\A[ァ-ヶ]+\z/, message: "Full-width katakana characters"} do
+    with_options format: {with: /\A[ァ-ヶ]+\z/, message: "は全角カナで入力してください"} do
       validates :family_name_ruby 
       validates :first_name_ruby
     end
