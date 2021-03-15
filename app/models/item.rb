@@ -11,9 +11,9 @@ class Item < ApplicationRecord
   has_one :order
 
   validates :title, :image, :text, presence: true
-  validates :price, presence:true, inclusion: {in: (300..9999999), message: "Out of setting range"}, format: {with: /\A[0-9]+\z/, message: "Half-width number"}
+  validates :price, presence:true, inclusion: {in: (300..9999999), message: "を¥300〜9,999,999の間で入力してください"}, format: {with: /\A[0-9]+\z/, message: "を半角数字で入力してください"}
 
-  with_options numericality: { other_than: 1, message: "Select" }do
+  with_options numericality: { other_than: 1, message: "を選択してください" }do
     validates :category_id
     validates :status_id
     validates :payment_id
